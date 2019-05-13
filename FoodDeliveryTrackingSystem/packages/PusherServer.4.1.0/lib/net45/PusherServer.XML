@@ -1,0 +1,1060 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PusherServer</name>
+    </assembly>
+    <members>
+        <member name="P:PusherServer.AuthenticationData.channel_data">
+            <summary>
+            Double encoded JSON containing presence channel user information.
+            </summary>
+        </member>
+        <member name="T:PusherServer.BatchEvent">
+            <summary>
+            Represents an event that is part of a batch trigger, for the purposes of serialisation
+            </summary>
+        </member>
+        <member name="P:PusherServer.BatchEvent.name">
+            <summary>
+            The name of the event
+            </summary>
+        </member>
+        <member name="P:PusherServer.BatchEvent.data">
+            <summary>
+            The event data
+            </summary>
+        </member>
+        <member name="P:PusherServer.BatchEvent.channel">
+            <summary>
+            The channel the event should be triggered on.
+            </summary>
+        </member>
+        <member name="P:PusherServer.BatchEvent.socket_id">
+            <summary>
+            The id of a socket to be excluded from receiving the event.
+            </summary>
+        </member>
+        <member name="T:PusherServer.BatchTriggerBody">
+            <summary>
+            Represents the payload to be sent when triggering events
+            </summary>
+        </member>
+        <member name="T:PusherServer.ChannelsList">
+            <summary>
+            A list of Channels received from the Pusher Server
+            </summary>
+        </member>
+        <member name="P:PusherServer.ChannelsList.Item(System.String)">
+            <summary>
+            Gets or sets the Channel Info for a given Channel Name
+            </summary>
+            <param name="channelName"></param>
+            <returns>A string representing the Channel Info</returns>
+        </member>
+        <member name="P:PusherServer.ChannelsList.Channels">
+            <summary>
+            Gets or sets all the Channel Info
+            </summary>
+        </member>
+        <member name="T:PusherServer.DefaultDeserializer">
+            <summary>
+            Default implmentation for deserializing an object
+            </summary>
+        </member>
+        <member name="M:PusherServer.DefaultDeserializer.Deserialize``1(System.String)">
+            <inheritDoc/>
+        </member>
+        <member name="T:PusherServer.DefaultSerializer">
+            <summary>
+            Default implmentation for serializing an object
+            </summary>
+        </member>
+        <member name="M:PusherServer.DefaultSerializer.Serialize(System.Object)">
+            <inheritDoc/>
+        </member>
+        <member name="T:PusherServer.Event">
+            <summary>
+            Represents an event for batch submission
+            </summary>
+        </member>
+        <member name="P:PusherServer.Event.EventName">
+            <summary>
+            The event name
+            </summary>
+        </member>
+        <member name="P:PusherServer.Event.Channel">
+            <summary>
+            The channel to which the event should be sent
+            </summary>
+        </member>
+        <member name="P:PusherServer.Event.SocketId">
+            <summary>
+            An optional socket ID which should not receive the event
+            </summary>
+        </member>
+        <member name="P:PusherServer.Event.Data">
+            <summary>
+            The event data
+            </summary>
+        </member>
+        <member name="T:PusherServer.EventIdData">
+            <summary>
+            Class used for handling the deserialisation of the Trigger HTTP response.
+            </summary>
+        </member>
+        <member name="P:PusherServer.EventIdData.event_ids">
+            <summary>
+            Dictionary of channel name to event ID for the triggered event.
+            </summary>
+        </member>
+        <member name="T:PusherServer.Exceptions.TriggerResponseException">
+            <summary>
+            Thrown when problems are detected with the response from the Pusher trigger HTTP endpoint.
+            </summary>
+        </member>
+        <member name="M:PusherServer.Exceptions.TriggerResponseException.#ctor(System.String)">
+            <summary>
+            Create a new instance
+            </summary>
+            <param name="message">Description of the exception</param>
+        </member>
+        <member name="M:PusherServer.Exceptions.TriggerResponseException.#ctor(System.String,System.Exception)">
+            <summary>
+            Create a new instance
+            </summary>
+            <param name="message">Description of the exception</param>
+            <param name="innerException">The inner exception</param>
+        </member>
+        <member name="T:PusherServer.GetResult`1">
+            <summary>
+            Deserialised the result from a Rest Response
+            </summary>
+            <typeparam name="T">The Type the Rest Response contains</typeparam>
+        </member>
+        <member name="M:PusherServer.GetResult`1.#ctor(System.Net.Http.HttpResponseMessage,System.String)">
+            <summary>
+            Attempts to deserialise the data contained with a Rest Response
+            </summary>
+            <param name="response">The original response from the rest call</param>
+            <param name="content">the extracted content</param>
+        </member>
+        <member name="P:PusherServer.GetResult`1.Data">
+            <summary>
+            Gets the data deserialised from the Rest Response
+            </summary>
+        </member>
+        <member name="T:PusherServer.IAuthenticationData">
+            <summary>
+            Interface for Authenticaton Data
+            </summary>
+        </member>
+        <member name="P:PusherServer.IAuthenticationData.auth">
+            <summary>
+            Gets the Authetication String
+            </summary>
+        </member>
+        <member name="P:PusherServer.IAuthenticationData.channel_data">
+            <summary>
+            Double encoded JSON containing presence channel user information.
+            </summary>
+        </member>
+        <member name="M:PusherServer.IAuthenticationData.ToJson">
+            <summary>
+            Returns a Json representation of the authentication data.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PusherServer.IDeserializeJsonStrings">
+            <summary>
+            Contract that allows a JSON deserializer to be injected
+            </summary>
+        </member>
+        <member name="M:PusherServer.IDeserializeJsonStrings.Deserialize``1(System.String)">
+            <summary>
+            Deserialize a JSON string into an object
+            </summary>
+            <param name="stringToDeserialize">The JSON string to be deserialized into an object instance</param>
+            <returns>A populated object</returns>
+        </member>
+        <member name="T:PusherServer.IGetResult`1">
+            <summary>
+            The result of a GET HTTP request to the Pusher REST API.
+            </summary>
+            <typeparam name="T">The object type that the data returned from the request should be deserialized to.</typeparam>
+        </member>
+        <member name="P:PusherServer.IGetResult`1.Data">
+            <summary>
+            Gets the data returned from the request in a deserialized form.
+            </summary>
+            <value>
+            The data.
+            </value>
+        </member>
+        <member name="T:PusherServer.IPusher">
+            <summary>
+            Provides access to functionality within the Pusher service such as Trigger to trigger events
+            and authenticating subscription requests to private and presence channels.
+            </summary>
+        </member>
+        <member name="M:PusherServer.IPusher.TriggerAsync(System.String,System.String,System.Object,PusherServer.ITriggerOptions)">
+            <summary>
+            Triggers an event on the specified channels in the background.
+            </summary>
+            <param name="channelName">The name of the channel to trigger the event on</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="data">The data to be sent with the event. The event payload.</param>
+            <param name="options">Additional options to be used when triggering the event. See <see cref="T:PusherServer.ITriggerOptions" />.</param>
+            <returns>The result of the call to the REST API</returns>
+        </member>
+        <member name="M:PusherServer.IPusher.TriggerAsync(System.String[],System.String,System.Object,PusherServer.ITriggerOptions)">
+            <summary>
+            Triggers an event on the specified channels in the background.
+            </summary>
+            <param name="channelNames">The channels to trigger the event on</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="data">The data to be sent with the event. The event payload.</param>
+            <param name="options">(Optional)Additional options to be used when triggering the event. See <see cref="T:PusherServer.ITriggerOptions" />.</param>
+            <returns>The result of the call to the REST API</returns>
+        </member>
+        <member name="M:PusherServer.IPusher.TriggerAsync(PusherServer.Event[])">
+            <summary>
+            Triggers the events in the passed in array asynchronously
+            </summary>
+            <param name="events">The events to trigger</param>
+            <returns>The result of the call to the REST API</returns>
+        </member>
+        <member name="M:PusherServer.IPusher.Authenticate(System.String,System.String)">
+            <summary>
+            Authenticates the subscription request for a private channel.
+            </summary>
+            <param name="channelName">Name of the channel to be authenticated.</param>
+            <param name="socketId">The socket id which uniquely identifies the connection attempting to subscribe to the channel.</param>
+            <returns>Authentication data where the required authentication token can be accessed via <see cref="P:PusherServer.IAuthenticationData.auth"/></returns>
+        </member>
+        <member name="M:PusherServer.IPusher.Authenticate(System.String,System.String,PusherServer.PresenceChannelData)">
+            <summary>
+            Authenticates the subscription request for a presence channel.
+            </summary>
+            <param name="channelName">Name of the channel to be authenticated.</param>
+            <param name="socketId">The socket id which uniquely identifies the connection attempting to subscribe to the channel.</param>
+            <param name="data">Information about the user subscribing to the presence channel.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="data"/> is null</exception>
+            <returns>Authentication data where the required authentication token can be accessed via <see cref="P:PusherServer.IAuthenticationData.auth"/></returns>
+        </member>
+        <member name="M:PusherServer.IPusher.GetAsync``1(System.String,System.Object)">
+            <summary>
+            Makes an asynchronous GET request to the specified resource. Authentication is handled as part of the call. The data returned from the request is deserizlized to the object type defined by <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="resource">The resource.</param>
+            <param name="parameters">Additional parameters to be sent as part of the request query string.</param>
+            <returns>The result of the GET request</returns>
+        </member>
+        <member name="M:PusherServer.IPusher.ProcessWebHook(System.String,System.String)">
+            <summary>
+            Handle an incoming WebHook and validate it.
+            </summary>
+            <param name="signature">The signature of the incoming WebHook</param>
+            <param name="body">The body of the incoming Webhook request</param>
+            <returns>A WebHook helper.</returns>
+        </member>
+        <member name="M:PusherServer.IPusher.FetchUsersFromPresenceChannelAsync``1(System.String)">
+            <summary>
+            Queries the Pusher API for the Users of a Presence Channel asynchronously
+            </summary>
+            <typeparam name="T">The type of object that will be returned by the API</typeparam>
+            <param name="channelName">The name of the channel to query</param>
+            <returns>The result of the Presence Channel Users query</returns>
+        </member>
+        <member name="M:PusherServer.IPusher.FetchStateForChannelAsync``1(System.String,System.Object)">
+            <summary>
+            Asynchronously queries the Pusher API for the state of a Channel
+            </summary>
+            <typeparam name="T">The type of object that will be returned by the API</typeparam>
+            <param name="channelName">The name of the channel to query</param>
+            <param name="info">An object containing a list of attributes to include in the query</param>
+            <returns>The result of the Channel State query</returns>
+        </member>
+        <member name="M:PusherServer.IPusher.FetchStateForChannelsAsync``1(System.Object)">
+            <summary>
+            Queries the Pusher API for the state of all channels based upon the info object
+            </summary>
+            <typeparam name="T">The type of object that will be returned by the API</typeparam>
+            <param name="info">An object containing a list of attributes to include in the query</param>
+        </member>
+        <member name="T:PusherServer.IPusherOptions">
+            <summary>
+            Interface for Pusher Options
+            </summary>
+        </member>
+        <member name="P:PusherServer.IPusherOptions.Encrypted">
+            <summary>
+            Gets or sets a value indicating whether calls to the Pusher REST API are over HTTP or HTTPS.
+            </summary>
+            <value>
+              <c>true</c> if encrypted; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:PusherServer.IPusherOptions.Port">
+            <summary>
+            Gets or sets the REST API port that the HTTP calls will be made to.
+            </summary>
+            <value>
+            The port.
+            </value>
+        </member>
+        <member name="P:PusherServer.IPusherOptions.JsonSerializer">
+            <summary>
+            Gets or sets the Json Serializer
+            </summary>
+        </member>
+        <member name="P:PusherServer.IPusherOptions.JsonDeserializer">
+            <summary>
+            Gets or sets the Json Deserializer
+            </summary>
+        </member>
+        <member name="P:PusherServer.IPusherOptions.RestClient">
+            <summary>
+            Gets or sets the pusher rest client. Generally only expected to be used for testing.
+            </summary>
+            <value>
+            The pusher rest client.
+            </value>
+        </member>
+        <member name="P:PusherServer.IPusherOptions.HostName">
+            <summary>
+            The host of the HTTP API endpoint excluding the scheme e.g. api.pusherapp.com
+            </summary>
+            <exception cref="T:System.FormatException">If a scheme is found at the start of the host value</exception>
+        </member>
+        <member name="P:PusherServer.IPusherOptions.Cluster">
+            <summary>
+            The cluster where the application was created, e.g. eu
+            </summary>
+        </member>
+        <member name="M:PusherServer.IPusherOptions.GetBaseUrl">
+            <summary>
+            Gets the base Url based on the set Options
+            </summary>
+            <returns>The constructed URL</returns>
+        </member>
+        <member name="T:PusherServer.IRequestResult">
+            <summary>
+            Base interface for all Request Results
+            </summary>
+        </member>
+        <member name="P:PusherServer.IRequestResult.Body">
+            <summary>
+            Gets the Body from a Request Result
+            </summary>
+        </member>
+        <member name="P:PusherServer.IRequestResult.StatusCode">
+            <summary>
+            Gets the Status Code from a Request Result
+            </summary>
+        </member>
+        <member name="T:PusherServer.ISerializeObjectsToJson">
+            <summary>
+            Contract that allows a JSON serializer to be injected
+            </summary>
+        </member>
+        <member name="M:PusherServer.ISerializeObjectsToJson.Serialize(System.Object)">
+            <summary>
+            Serialize an object
+            </summary>
+            <param name="objectToSerialize">The object to be serialized into a JSON string</param>
+            <returns>The passed in object as a JSON string</returns>
+        </member>
+        <member name="T:PusherServer.ITriggerOptions">
+            <summary>
+            Additional options that can be used when triggering an event.
+            </summary>
+        </member>
+        <member name="P:PusherServer.ITriggerOptions.SocketId">
+            <summary>
+            Gets or sets the Socket ID for a consuming Trigger
+            </summary>
+        </member>
+        <member name="T:PusherServer.ITriggerResult">
+            <summary>
+            Interface for Trigger Request Results
+            </summary>
+        </member>
+        <member name="P:PusherServer.ITriggerResult.EventIds">
+            <summary>
+            Gets the Event IDs related to this Trigger Event
+            </summary>
+        </member>
+        <member name="T:PusherServer.IWebHook">
+            <summary>
+            Interface for Web Hooks
+            </summary>
+        </member>
+        <member name="P:PusherServer.IWebHook.IsValid">
+            <summary>
+            Indicates if the WebHook has validated.
+            </summary>
+        </member>
+        <member name="P:PusherServer.IWebHook.Events">
+            <summary>
+            The Events in the WebHook
+            </summary>
+        </member>
+        <member name="P:PusherServer.IWebHook.Time">
+            <summary>
+            The timestamp of the WebHook
+            </summary>
+        </member>
+        <member name="P:PusherServer.IWebHook.ValidationErrors">
+            <summary>
+            An array of validation errors. If <see cref="P:PusherServer.IWebHook.IsValid"/> is true then the array
+            will have no elements.
+            </summary>
+        </member>
+        <member name="T:PusherServer.PresenceChannelData">
+            <summary>
+            Information about a user who is subscribing to a presence channel.
+            </summary>
+        </member>
+        <member name="P:PusherServer.PresenceChannelData.user_id">
+            <summary>
+            A unique user identifier for the user witin the application.
+            </summary>
+            <remarks>
+            Pusher uses this to uniquely identify a user. So, if multiple users are given the same <code>user_id</code>
+            the second of these users will be ignored and won't be represented on the presence channel.
+            </remarks>
+        </member>
+        <member name="P:PusherServer.PresenceChannelData.user_info">
+            <summary>
+            Arbitrary additional information about the user.
+            </summary>
+        </member>
+        <member name="T:PusherServer.Pusher">
+            <summary>
+            Provides access to functionality within the Pusher service such as Trigger to trigger events
+            and authenticating subscription requests to private and presence channels.
+            </summary>
+        </member>
+        <member name="P:PusherServer.Pusher.VERSION">
+            <summary>
+            Pusher library version information.
+            </summary>
+        </member>
+        <member name="P:PusherServer.Pusher.LIBRARY_NAME">
+            <summary>
+            The Pusher library name.
+            </summary>
+        </member>
+        <member name="M:PusherServer.Pusher.#ctor(System.String,System.String,System.String,PusherServer.IPusherOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PusherServer.Pusher" /> class.
+            </summary>
+            <param name="appId">The app id.</param>
+            <param name="appKey">The app key.</param>
+            <param name="appSecret">The app secret.</param>
+            <param name="options">(Optional)Additional options to be used with the instance e.g. setting the call to the REST API to be made over HTTPS.</param>
+        </member>
+        <member name="M:PusherServer.Pusher.TriggerAsync(System.String,System.String,System.Object,PusherServer.ITriggerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PusherServer.Pusher.TriggerAsync(System.String[],System.String,System.Object,PusherServer.ITriggerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PusherServer.Pusher.TriggerAsync(PusherServer.Event[])">
+            <inheritDoc/>
+        </member>
+        <member name="M:PusherServer.Pusher.Authenticate(System.String,System.String)">
+            <inheritDoc/>
+        </member>
+        <member name="M:PusherServer.Pusher.Authenticate(System.String,System.String,PusherServer.PresenceChannelData)">
+            <inheritDoc/>
+        </member>
+        <member name="M:PusherServer.Pusher.GetAsync``1(System.String,System.Object)">
+            <inheritDoc/>
+        </member>
+        <member name="M:PusherServer.Pusher.ProcessWebHook(System.String,System.String)">
+            <inheritDoc/>
+        </member>
+        <member name="M:PusherServer.Pusher.FetchUsersFromPresenceChannelAsync``1(System.String)">
+            <inheritDoc/>
+        </member>
+        <member name="M:PusherServer.Pusher.FetchStateForChannelAsync``1(System.String,System.Object)">
+            <inheritDoc/>
+        </member>
+        <member name="M:PusherServer.Pusher.FetchStateForChannelsAsync``1(System.Object)">
+            <inheritDoc/>
+        </member>
+        <member name="T:PusherServer.PusherOptions">
+            <summary>
+            Options to be set on the <see cref="T:PusherServer.Pusher">Pusher</see> instance.
+            </summary>
+        </member>
+        <member name="F:PusherServer.PusherOptions.DEFAULT_REST_API_HOST">
+            <summary>
+            The default Rest API Host for contacting the Pusher server, it does not contain a cluster name
+            </summary>
+        </member>
+        <member name="P:PusherServer.PusherOptions.Encrypted">
+            <inheritedDoc/>
+        </member>
+        <member name="P:PusherServer.PusherOptions.Port">
+            <inheritDoc/>
+        </member>
+        <member name="P:PusherServer.PusherOptions.Cluster">
+            <inheritDoc/>
+        </member>
+        <member name="P:PusherServer.PusherOptions.RestClient">
+            <inheritDoc/>
+        </member>
+        <member name="P:PusherServer.PusherOptions.HostName">
+            <inheritDoc/>
+        </member>
+        <member name="P:PusherServer.PusherOptions.JsonSerializer">
+            <inheritDoc/>
+        </member>
+        <member name="P:PusherServer.PusherOptions.JsonDeserializer">
+            <inheritDoc/>
+        </member>
+        <member name="M:PusherServer.PusherOptions.GetBaseUrl">
+            <inheritDoc/>
+        </member>
+        <member name="T:PusherServer.RawBodySerializer">
+            <summary>
+            An implementation of the <see cref="T:PusherServer.ISerializeObjectsToJson"/> that passes through the raw string.
+            </summary>
+        </member>
+        <member name="M:PusherServer.RawBodySerializer.Serialize(System.Object)">
+            <summary>
+            Presumes we are getting a string as the body, and passes it through.
+            </summary>
+            <param name="body">The string body to pass through.</param>
+            <returns>The body passed in.</returns>
+            <exception cref="T:System.ArgumentException">Thrown if the body provided is not a string.</exception>
+        </member>
+        <member name="T:PusherServer.RequestResult">
+            <summary>
+            Abstract base class for results coming back from request to the Pusher servers
+            </summary>
+        </member>
+        <member name="M:PusherServer.RequestResult.#ctor(System.Net.Http.HttpResponseMessage,System.String)">
+            <summary>
+            Constructor to constract the abstract base class for classes derived from RequestResults
+            </summary>
+            <param name="response"></param>
+            <param name="originalContent"></param>
+        </member>
+        <member name="P:PusherServer.RequestResult.StatusCode">
+            <summary>
+            Gets the Status Code returned in the wrapped Rest Response
+            </summary>
+        </member>
+        <member name="P:PusherServer.RequestResult.Body">
+            <summary>
+            Gets the Body returned in the wrapped Rest Response
+            </summary>
+        </member>
+        <member name="P:PusherServer.RequestResult.OriginalContent">
+            <summary>
+            Gets the original content that was returned in the response, if the response returned was Bad
+            </summary>
+        </member>
+        <member name="P:PusherServer.RequestResult.Response">
+            <summary>
+            Gets the original response from the rest service
+            </summary>
+        </member>
+        <member name="T:PusherServer.RestfulClient.AuthenticatedRequestFactory">
+            <summary>
+            Factory that creates authenticated requests to send to the Pusher API
+            </summary>
+        </member>
+        <member name="M:PusherServer.RestfulClient.AuthenticatedRequestFactory.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Constructs a new Autheticated Request Factory
+            </summary>
+            <param name="appKey">Your app Key for the Pusher API</param>
+            <param name="appId">Your app Id for the Pusher API</param>
+            <param name="appSecret">Your app Secret for the Pusher API</param>
+        </member>
+        <member name="M:PusherServer.RestfulClient.AuthenticatedRequestFactory.Build(PusherServer.RestfulClient.PusherMethod,System.String,System.Object,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="T:PusherServer.RestfulClient.IAuthenticatedRequestFactory">
+            <summary>
+            The contract for the factory that creates authenticated requests to send to the Pusher API
+            </summary>
+        </member>
+        <member name="M:PusherServer.RestfulClient.IAuthenticatedRequestFactory.Build(PusherServer.RestfulClient.PusherMethod,System.String,System.Object,System.Object)">
+            <summary>
+            Builds a new authenticated request to send to Pusher
+            </summary>
+            <param name="requestType">What type of REST call is to be made</param>
+            <param name="resource">The resource path for the REST call</param>
+            <param name="requestParameters">(Optional) Any parameters that need to be included in the call</param>
+            <param name="requestBody">(Optional) The body to be sent with the request</param>
+            <returns>A constructed REST request</returns>
+        </member>
+        <member name="T:PusherServer.RestfulClient.IPusherRestClient">
+            <summary>
+            Contract for a client for the Pusher REST requests
+            </summary>
+        </member>
+        <member name="M:PusherServer.RestfulClient.IPusherRestClient.ExecuteGetAsync``1(PusherServer.RestfulClient.IPusherRestRequest)">
+            <summary>
+            Execute a REST GET request to the Pusher API asynchronously
+            </summary>
+            <param name="pusherRestRequest">The request to execute</param>
+            <returns>The response received from Pusher</returns>
+        </member>
+        <member name="M:PusherServer.RestfulClient.IPusherRestClient.ExecutePostAsync(PusherServer.RestfulClient.IPusherRestRequest)">
+            <summary>
+            Execute a REST POST request to the Pusher API asynchronously
+            </summary>
+            <param name="pusherRestRequest">The request to execute</param>
+            <returns>The response received from Pusher</returns>
+        </member>
+        <member name="P:PusherServer.RestfulClient.IPusherRestClient.BaseUrl">
+            <summary>
+            Gets the Base Url this client is using
+            </summary>
+        </member>
+        <member name="T:PusherServer.RestfulClient.IPusherRestRequest">
+            <summary>
+            The contract for a REST request to be made to the Pusher API
+            </summary>
+        </member>
+        <member name="P:PusherServer.RestfulClient.IPusherRestRequest.Method">
+            <summary>
+            Gets or sets the type of RESTful call to make
+            </summary>
+        </member>
+        <member name="P:PusherServer.RestfulClient.IPusherRestRequest.ResourceUri">
+            <summary>
+            Gets the Resource Uri for this request
+            </summary>
+        </member>
+        <member name="P:PusherServer.RestfulClient.IPusherRestRequest.Body">
+            <summary>
+            Gets or sets the content that will be sent with the request
+            </summary>
+        </member>
+        <member name="M:PusherServer.RestfulClient.IPusherRestRequest.GetContentAsJsonString">
+            <summary>
+            Gets the current body as a Json String
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PusherServer.RestfulClient.PusherMethod">
+            <summary>
+            Enum used to determine what kind of REST request to make
+            </summary>
+        </member>
+        <member name="F:PusherServer.RestfulClient.PusherMethod.GET">
+            <summary>
+            Make a GET request
+            </summary>
+        </member>
+        <member name="F:PusherServer.RestfulClient.PusherMethod.POST">
+            <summary>
+            Make a POST request
+            </summary>
+        </member>
+        <member name="T:PusherServer.RestfulClient.PusherRestClient">
+            <summary>
+            A client for the Pusher REST requests
+            </summary>
+        </member>
+        <member name="M:PusherServer.RestfulClient.PusherRestClient.#ctor(System.String,System.String,System.Version)">
+            <summary>
+            Constructs a new instance of the PusherRestClient
+            </summary>
+            <param name="baseAddress">The base address of the Pusher API as a URI formatted string</param>
+            <param name="libraryName"></param>
+            <param name="version"></param>
+        </member>
+        <member name="M:PusherServer.RestfulClient.PusherRestClient.#ctor(System.Uri,System.String,System.Version)">
+            <summary>
+            Constructs a new instance of the PusherRestClient
+            </summary>
+            <param name="baseAddress">The base address of the Pusher API</param>
+            <param name="libraryName">The name of the Pusher Library</param>
+            <param name="version">The version of the Pusher library</param>
+        </member>
+        <member name="P:PusherServer.RestfulClient.PusherRestClient.BaseUrl">
+            <inheritDoc/>
+        </member>
+        <member name="M:PusherServer.RestfulClient.PusherRestClient.ExecuteGetAsync``1(PusherServer.RestfulClient.IPusherRestRequest)">
+            <inheritDoc/>
+        </member>
+        <member name="M:PusherServer.RestfulClient.PusherRestClient.ExecutePostAsync(PusherServer.RestfulClient.IPusherRestRequest)">
+            <inheritDoc/>
+        </member>
+        <member name="T:PusherServer.RestfulClient.PusherRestRequest">
+            <summary>
+            A REST request to be made to the Pusher API
+            </summary>
+        </member>
+        <member name="M:PusherServer.RestfulClient.PusherRestRequest.#ctor(System.String)">
+            <summary>
+            Creates a new REST request to make back to Pusher HQ
+            </summary>
+            <param name="resourceUri">The URI to call</param>
+        </member>
+        <member name="P:PusherServer.RestfulClient.PusherRestRequest.Method">
+            <inheritdoc/>
+        </member>
+        <member name="P:PusherServer.RestfulClient.PusherRestRequest.ResourceUri">
+            <inheritdoc/>
+        </member>
+        <member name="P:PusherServer.RestfulClient.PusherRestRequest.Body">
+            <inheritdoc/>
+        </member>
+        <member name="M:PusherServer.RestfulClient.PusherRestRequest.GetContentAsJsonString">
+            <inheritdoc/>
+        </member>
+        <member name="T:PusherServer.TriggerBody">
+            <summary>
+            Represents the payload to be sent when triggering events
+            </summary>
+        </member>
+        <member name="P:PusherServer.TriggerBody.name">
+            <summary>
+            The name of the event
+            </summary>
+        </member>
+        <member name="P:PusherServer.TriggerBody.data">
+            <summary>
+            The event data
+            </summary>
+        </member>
+        <member name="P:PusherServer.TriggerBody.channels">
+            <summary>
+            The channels the event should be triggered on.
+            </summary>
+        </member>
+        <member name="P:PusherServer.TriggerBody.socket_id">
+            <summary>
+            The id of a socket to be excluded from receiving the event.
+            </summary>
+        </member>
+        <member name="T:PusherServer.TriggerOptions">
+            <summary>
+            Represents the Options that can be used by A Trigger
+            </summary>
+        </member>
+        <member name="P:PusherServer.TriggerOptions.SocketId">
+            <summary>
+            Gets or sets the Socket ID for the consuming Trigger
+            </summary>
+        </member>
+        <member name="T:PusherServer.TriggerResult">
+            <summary>
+            The response from a Trigger REST request
+            </summary>
+        </member>
+        <member name="M:PusherServer.TriggerResult.#ctor(System.Net.Http.HttpResponseMessage,System.String)">
+            <summary>
+            Constructs a new instance of a TriggerResult based upon a passed in Rest Response
+            </summary>
+            <param name="response">The Rest Response which will form the basis of this Trigger Result</param>
+            <param name="responseContent">The response content as a string</param>
+        </member>
+        <member name="P:PusherServer.TriggerResult.EventIds">
+            <inheritDoc/>
+        </member>
+        <member name="T:PusherServer.Util.ReadOnlyDictionary`2">
+            <summary>
+            Provides the base class for a generic read-only dictionary.
+            </summary>
+            <typeparam name="TKey">
+            The type of keys in the dictionary.
+            </typeparam>
+            <typeparam name="TValue">
+            The type of values in the dictionary.
+            </typeparam>
+            <remarks>
+            <para>
+            An instance of the <b>ReadOnlyDictionary</b> generic class is
+            always read-only. A dictionary that is read-only is simply a
+            dictionary with a wrapper that prevents modifying the
+            dictionary; therefore, if changes are made to the underlying
+            dictionary, the read-only dictionary reflects those changes. 
+            See <see cref="T:System.Collections.Generic.Dictionary`2"/> for a modifiable version of 
+            this class.
+            </para>
+            <para>
+            <b>Notes to Implementers</b> This base class is provided to 
+            make it easier for implementers to create a generic read-only
+            custom dictionary. Implementers are encouraged to extend this
+            base class instead of creating their own. 
+            </para>
+            </remarks>
+        </member>
+        <member name="M:PusherServer.Util.ReadOnlyDictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1})">
+            <summary>
+            Initializes a new instance of the
+            <see cref="T:ReadOnlyDictionary`2" /> class that wraps
+            the supplied <paramref name="dictionaryToWrap"/>.
+            </summary>
+            <param name="dictionaryToWrap">The <see cref="T:IDictionary`2" />
+            that will be wrapped.</param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when the dictionary is null.
+            </exception>
+        </member>
+        <member name="P:PusherServer.Util.ReadOnlyDictionary`2.Count">
+            <summary>
+            Gets the number of key/value pairs contained in the
+            <see cref="T:ReadOnlyDictionary`2"></see>.
+            </summary>
+            <value>The number of key/value pairs.</value>
+            <returns>The number of key/value pairs contained in the
+            <see cref="T:ReadOnlyDictionary`2"></see>.</returns>
+        </member>
+        <member name="P:PusherServer.Util.ReadOnlyDictionary`2.Keys">
+            <summary>Gets a collection containing the keys in the
+            <see cref="T:ReadOnlyDictionary{TKey,TValue}"></see>.</summary>
+            <value>A <see cref="T:System.Collections.Generic.Dictionary`2.KeyCollection"/> 
+            containing the keys.</value>
+            <returns>A
+            <see cref="T:System.Collections.Generic.Dictionary`2.KeyCollection"/>
+            containing the keys in the
+            <see cref="T:System.Collections.Generic.Dictionary`2"></see>.
+            </returns>
+        </member>
+        <member name="P:PusherServer.Util.ReadOnlyDictionary`2.Values">
+            <summary>
+            Gets a collection containing the values of the
+            <see cref="T:ReadOnlyDictionary`2"/>.
+            </summary>
+            <value>The collection of values.</value>
+        </member>
+        <member name="P:PusherServer.Util.ReadOnlyDictionary`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#IsReadOnly">
+            <summary>Gets a value indicating whether the dictionary is read-only.
+            This value will always be true.</summary>
+        </member>
+        <member name="P:PusherServer.Util.ReadOnlyDictionary`2.System#Collections#ICollection#IsSynchronized">
+            <summary>
+            Gets a value indicating whether access to the dictionary
+            is synchronized (thread safe).
+            </summary>
+        </member>
+        <member name="P:PusherServer.Util.ReadOnlyDictionary`2.System#Collections#ICollection#SyncRoot">
+            <summary>
+            Gets an object that can be used to synchronize access to dictionary.
+            </summary>
+        </member>
+        <member name="P:PusherServer.Util.ReadOnlyDictionary`2.Item(`0)">
+            <summary>
+            Gets or sets the value associated with the specified key.
+            </summary>
+            <returns>
+            The value associated with the specified key. If the specified key
+            is not found, a get operation throws a 
+            <see cref="T:System.Collections.Generic.KeyNotFoundException" />,
+            and a set operation creates a new element with the specified key.
+            </returns>
+            <param name="key">The key of the value to get or set.</param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when the key is null.
+            </exception>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">
+            The property is retrieved and key does not exist in the collection.
+            </exception>
+        </member>
+        <member name="M:PusherServer.Util.ReadOnlyDictionary`2.System#Collections#Generic#IDictionary{TKey,TValue}#Add(`0,`1)">
+            <summary>This method is not supported by the 
+            <see cref="T:ReadOnlyDictionary`2"/>.</summary>
+            <param name="key">
+            The object to use as the key of the element to add.</param>
+            <param name="value">
+            The object to use as the value of the element to add.</param>
+        </member>
+        <member name="M:PusherServer.Util.ReadOnlyDictionary`2.ContainsKey(`0)">
+            <summary>Determines whether the <see cref="T:ReadOnlyDictionary`2" />
+            contains the specified key.</summary>
+            <returns>
+            True if the <see cref="T:ReadOnlyDictionary`2" /> contains
+            an element with the specified key; otherwise, false.
+            </returns>
+            <param name="key">The key to locate in the
+            <see cref="T:ReadOnlyDictionary`2"></see>.</param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when the key is null.
+            </exception>
+        </member>
+        <member name="M:PusherServer.Util.ReadOnlyDictionary`2.System#Collections#Generic#IDictionary{TKey,TValue}#Remove(`0)">
+            <summary>
+            This method is not supported by the <see cref="T:ReadOnlyDictionary`2"/>.
+            </summary>
+            <param name="key">The key of the element to remove.</param>
+            <returns>
+            True if the element is successfully removed; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:PusherServer.Util.ReadOnlyDictionary`2.TryGetValue(`0,`1@)">
+            <summary>
+            Gets the value associated with the specified key.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <param name="value">When this method returns, contains the value
+            associated with the specified key, if the key is found;
+            otherwise, the default value for the type of the value parameter.
+            This parameter is passed uninitialized.</param>
+            <returns>
+            <b>true</b> if the <see cref="T:ReadOnlyDictionary`2" /> contains
+            an element with the specified key; otherwise, <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:PusherServer.Util.ReadOnlyDictionary`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#Add(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <summary>This method is not supported by the
+            <see cref="T:ReadOnlyDictionary`2"/>.</summary>
+            <param name="item">
+            The object to add to the <see cref="T:ICollection`1"/>.
+            </param>
+        </member>
+        <member name="M:PusherServer.Util.ReadOnlyDictionary`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#Clear">
+            <summary>This method is not supported by the 
+            <see cref="T:ReadOnlyDictionary`2"/>.</summary>
+        </member>
+        <member name="M:PusherServer.Util.ReadOnlyDictionary`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#Contains(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <summary>
+            Determines whether the <see cref="T:ICollection`1"/> contains a
+            specific value.
+            </summary>
+            <param name="item">
+            The object to locate in the <see cref="T:ICollection`1"/>.
+            </param>
+            <returns>
+            <b>true</b> if item is found in the <b>ICollection</b>; 
+            otherwise, <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:PusherServer.Util.ReadOnlyDictionary`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)">
+            <summary>
+            Copies the elements of the ICollection to an Array, starting at a
+            particular Array index. 
+            </summary>
+            <param name="array">The one-dimensional Array that is the
+            destination of the elements copied from ICollection.
+            The Array must have zero-based indexing.
+            </param>
+            <param name="arrayIndex">
+            The zero-based index in array at which copying begins.
+            </param>
+        </member>
+        <member name="M:PusherServer.Util.ReadOnlyDictionary`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey,TValue}}#Remove(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <summary>This method is not supported by the
+            <see cref="T:ReadOnlyDictionary`2"/>.</summary>
+            <param name="item">
+            The object to remove from the ICollection.
+            </param>
+            <returns>Will never return a value.</returns>
+        </member>
+        <member name="M:PusherServer.Util.ReadOnlyDictionary`2.System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{TKey,TValue}}#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>
+            A IEnumerator that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:PusherServer.Util.ReadOnlyDictionary`2.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An IEnumerator that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:PusherServer.Util.ReadOnlyDictionary`2.System#Collections#ICollection#CopyTo(System.Array,System.Int32)">
+            <summary>
+            For a description of this member, see <see cref="M:System.Collections.ICollection.CopyTo(System.Array,System.Int32)"/>. 
+            </summary>
+            <param name="array">
+            The one-dimensional Array that is the destination of the elements copied from 
+            ICollection. The Array must have zero-based indexing.
+            </param>
+            <param name="index">
+            The zero-based index in Array at which copying begins.
+            </param>
+        </member>
+        <member name="T:PusherServer.ValidationHelper">
+            <summary>
+            Helps validation of channel names and socket_id values.
+            </summary>
+        </member>
+        <member name="F:PusherServer.ValidationHelper.CHANNEL_NAME_REGEX">
+            <summary>
+            A regular expression to check that a channel name is in a format allowed and accepted by Pusher.
+            </summary>
+        </member>
+        <member name="F:PusherServer.ValidationHelper.CHANNEL_NAME_MAX_LENGTH">
+            <summary>
+            The maximum length of a channel name allowed by Pusher.
+            </summary>
+        </member>
+        <member name="F:PusherServer.ValidationHelper.SOCKET_ID_REGEX">
+            <summary>
+            A regular expression to check that a socket_id is in a format allowed and accepted by Pusher.
+            </summary>
+        </member>
+        <member name="F:PusherServer.ValidationHelper.MAX_BATCH_SIZE">
+            <summary>
+            The maximum event batch size accepted by Pusher
+            </summary>
+        </member>
+        <member name="M:PusherServer.ValidationHelper.ValidateSocketId(System.String)">
+            <summary>
+            Validate a socket_id value
+            </summary>
+            <param name="socketId">The value to be checked.</param>
+            <exception cref="T:System.FormatException">If the socket_id name is not in the allowed format.</exception>
+        </member>
+        <member name="M:PusherServer.ValidationHelper.ValidateChannelName(System.String)">
+            <summary>
+            Validate a single channel name is in the allowed format.
+            </summary>
+            <param name="channelName">The channel name to be checked</param>
+            <exception cref="T:System.FormatException">If the channel name is not in the allowed format.</exception>
+        </member>
+        <member name="M:PusherServer.ValidationHelper.ValidateChannelNames(System.String[])">
+            <summary>
+            Validate an array of channel names
+            </summary>
+            <param name="channelNames">The array of channel names</param>
+            <exception cref="T:System.FormatException">If any channel names are not in the allowed format.</exception>
+        </member>
+        <member name="P:PusherServer.WebHook.JsonDeserializer">
+            <summary>
+            Gets or sets the JSON Deserializer to use
+            </summary>
+        </member>
+        <member name="T:PusherServer.WebHookData">
+            <summary>
+            Represents the Data payload of a Web Hook
+            </summary>
+        </member>
+        <member name="P:PusherServer.WebHookData.time_ms">
+            <summary>
+            Gets or sets the Time the Web Hook was created in Milliseconds
+            </summary>
+        </member>
+        <member name="P:PusherServer.WebHookData.events">
+            <summary>
+            Gets or sets the Events being triggered
+            </summary>
+        </member>
+        <member name="P:PusherServer.WebHookData.Time">
+            <summary>
+            Gets the Time the Web Hook was created
+            </summary>
+        </member>
+        <member name="T:PusherServer.WebHookEvent">
+            <summary>
+            A Web Hook Event
+            </summary>
+        </member>
+    </members>
+</doc>

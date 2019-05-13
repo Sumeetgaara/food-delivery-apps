@@ -1,0 +1,68 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-xs-12 col-lg-12">
+            <h3>WHere is my fOOD?</h3>
+            <div id="map">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+<script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=yourKey"></script>
+<script>
+	let lineCoordinates = []
+	let latitude = 6.4541;
+	let longitude = 3.3947;
+	let map = false;
+	let marker = false;
+	const pusher = new Pusher('yourappkey', {
+      cluster: 'your-app-cluster'
+    });
+    const channel = pusher.subscribe('location_channel');
+
+    channel.bind('new_location', function(data) {
+	    updateMap(data);
+    });
+
+	function initMap() {
+        let lagos = {lat: latitude, lng: longitude};
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: lagos
+        });
+
+        marker = new google.maps.Marker({
+	      position: lagos,
+          map: map
+        });
+	    lineCoordinates.push(marker.getPosition())
+	}
+	const updateMap = function(data) {
+        latitude = (data.latitude * 1);
+	    longitude = (data.longitude * 1);
+	    map.setCenter({
+            lat: latitude,
+	        lng: longitude,
+	        alt: 0
+	    });
+	    marker.setPosition({
+            lat: latitude,
+            lng: longitude,
+	        alt: 0
+	    });
+	    lineCoordinates.push(marker.getPosition())
+	    let lineCoordinatesPath = new google.maps.Polyline({
+	      path: lineCoordinates,
+	      geodesic: true,
+	      map: map,
+	      strokeColor: '#FF0000',
+	      strokeOpacity: 1.0,
+	      strokeWeight: 2
+	    });
+	}
+</script>

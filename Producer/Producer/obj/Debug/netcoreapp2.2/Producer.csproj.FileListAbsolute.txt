@@ -1,0 +1,11 @@
+C:\Users\Sneha More\source\repos\Producer\Producer\bin\Debug\netcoreapp2.2\Producer.deps.json
+C:\Users\Sneha More\source\repos\Producer\Producer\bin\Debug\netcoreapp2.2\Producer.runtimeconfig.json
+C:\Users\Sneha More\source\repos\Producer\Producer\bin\Debug\netcoreapp2.2\Producer.runtimeconfig.dev.json
+C:\Users\Sneha More\source\repos\Producer\Producer\bin\Debug\netcoreapp2.2\Producer.dll
+C:\Users\Sneha More\source\repos\Producer\Producer\obj\Debug\netcoreapp2.2\Producer.csprojAssemblyReference.cache
+C:\Users\Sneha More\source\repos\Producer\Producer\obj\Debug\netcoreapp2.2\Producer.csproj.CoreCompileInputs.cache
+C:\Users\Sneha More\source\repos\Producer\Producer\obj\Debug\netcoreapp2.2\Producer.AssemblyInfoInputs.cache
+C:\Users\Sneha More\source\repos\Producer\Producer\obj\Debug\netcoreapp2.2\Producer.AssemblyInfo.cs
+C:\Users\Sneha More\source\repos\Producer\Producer\bin\Debug\netcoreapp2.2\Producer.pdb
+C:\Users\Sneha More\source\repos\Producer\Producer\obj\Debug\netcoreapp2.2\Producer.dll
+C:\Users\Sneha More\source\repos\Producer\Producer\obj\Debug\netcoreapp2.2\Producer.pdb

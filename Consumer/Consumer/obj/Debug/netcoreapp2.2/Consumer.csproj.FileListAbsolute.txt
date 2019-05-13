@@ -1,0 +1,11 @@
+C:\Users\Sneha More\source\repos\Consumer\Consumer\bin\Debug\netcoreapp2.2\Consumer.deps.json
+C:\Users\Sneha More\source\repos\Consumer\Consumer\bin\Debug\netcoreapp2.2\Consumer.runtimeconfig.json
+C:\Users\Sneha More\source\repos\Consumer\Consumer\bin\Debug\netcoreapp2.2\Consumer.runtimeconfig.dev.json
+C:\Users\Sneha More\source\repos\Consumer\Consumer\bin\Debug\netcoreapp2.2\Consumer.dll
+C:\Users\Sneha More\source\repos\Consumer\Consumer\obj\Debug\netcoreapp2.2\Consumer.csprojAssemblyReference.cache
+C:\Users\Sneha More\source\repos\Consumer\Consumer\obj\Debug\netcoreapp2.2\Consumer.csproj.CoreCompileInputs.cache
+C:\Users\Sneha More\source\repos\Consumer\Consumer\obj\Debug\netcoreapp2.2\Consumer.AssemblyInfoInputs.cache
+C:\Users\Sneha More\source\repos\Consumer\Consumer\obj\Debug\netcoreapp2.2\Consumer.AssemblyInfo.cs
+C:\Users\Sneha More\source\repos\Consumer\Consumer\bin\Debug\netcoreapp2.2\Consumer.pdb
+C:\Users\Sneha More\source\repos\Consumer\Consumer\obj\Debug\netcoreapp2.2\Consumer.dll
+C:\Users\Sneha More\source\repos\Consumer\Consumer\obj\Debug\netcoreapp2.2\Consumer.pdb
